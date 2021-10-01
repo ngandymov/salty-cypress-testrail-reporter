@@ -1,5 +1,5 @@
 {
-  "name": "jeremyg-salty-cypress-testrail-reporter",
+  "name": "sm-salty-cypress-testrail-reporter",
   "version": "1.3.7",
   "description": "A Testrail reporter for cypress including TestRail API basic library",
   "main": "index.js",
@@ -9,11 +9,11 @@
     "testrail",
     "reporter"
   ],
-  "author": "Jeremy Grannan <sjgrannan@gmail.com>",
+  "author": "",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sjgrannan/salty-cypress-testrail-reporter.git"
+    "url": "git+https://github.com/ngandymov/sm-salty-cypress-testrail-reporter.git"
   },
   "scripts": {
     "tsc": "tsc",
@@ -35,8 +35,8 @@
     "rimraf": "^2.6.3",
     "typescript": "^2.9.2"
   },
-  "homepage": "https://github.com/sjgrannan/salty-cypress-testrail-reporter#readme",
+  "homepage": "https://github.com/ngandymov/sm-salty-cypress-testrail-reporter#readme",
   "bugs": {
-    "url": "https://github.com/sjgrannan/salty-cypress-testrail-reporter/issues"
+    "url": "https://github.com/ngandymov/sm-salty-cypress-testrail-reporter/issues"
   }
 }

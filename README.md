@@ -15,7 +15,7 @@ Allows for options to create a new test run on **cypress run** or if you want th
 ## Install
 
 ```shell
-$ npm install jeremyg-salty-cypress-testrail-reporter --save-dev
+npm install sm-salty-cypress-testrail-reporter --save-dev
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ Add reporter to your `cypress.json`:
 ```json
 ...
 {
-  "reporter": "jeremyg-salty-cypress-testrail-reporter",
+  "reporter": "sm-salty-cypress-testrail-reporter",
   "reporterOptions": {
     "domain": "yourdomain.testrail.com",
     "username": "username",
@@ -68,6 +68,10 @@ it("Can authenticate a valid userC123", ...
 **runId**: _number_ (optional: only necessary if createTestRun is set to true) a specific test run id number.
 
 **runName**: _string_ (optional) name of the Testrail run.
+
+# Functionality Update 10/01/2021
+
+Change TestRail API path
 
 # Functionality Update 01/04/2019
 
