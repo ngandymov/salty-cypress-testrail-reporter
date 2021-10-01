@@ -26,7 +26,7 @@ var TestRail = /** @class */ (function () {
       _this.currentDate = moment(new Date()).format('L');
       if (_this.lastRunDate === _this.currentDate) {
         console.log(
-          'Test Run already created today. Posting results to Test Run ID: R' +
+          'Test Run already created today. Posting results to existing Run ID: ' +
             response.data.runs[0].id,
         );
         return true;
