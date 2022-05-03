@@ -37,75 +37,24 @@ var TestRail = /** @class */ (function () {
   };
   TestRail.prototype.createRun = function (name, description) {
     var _this = this;
-    let ids = [];
     // If the lastRunDate of the most current test run is equal to today's date, don't create a new test run.
-    var getAllCases = function () {
-      return axios({
-        method: 'get',
-        url:
-          _this.base +
-          '/get_cases/' +
-          _this.options.projectId +
-          '&suite_id=' +
-          _this.options.suiteId +
-          '&type_id=' +
-          _this.options.typeId,
-        headers: { 'Content-Type': 'application/json' },
-        auth: {
-          username: _this.options.username,
-          password: _this.options.password,
-        },
-      }).then(function (response) {
-        var currCaseIds = response.data.cases.map((cases) => cases.id);
-        ids.push(...currCaseIds);
-
-        return response;
-      });
-    };
-    var getNextCases = function (urlLink) {
-      return axios({
-        method: 'get',
-        url: 'https://' + _this.options.domain + '/index.php?' + urlLink,
-        headers: { 'Content-Type': 'application/json' },
-        auth: {
-          username: _this.options.username,
-          password: _this.options.password,
-        },
-      }).then(function (response) {
-        var currCaseIds = response.data.cases.map((cases) => cases.id);
-        ids.push(...currCaseIds);
-        if (response.data._links.next !== null) {
-          getNextCases(response.data._links.next);
-        }
-      });
-    };
-    getAllCases().then((response) => {
-      getNextCases(response.data._links.next).then(function () {
-        setTimeout(async () => {
-          await axios({
-            method: 'post',
-            url: _this.base + '/add_run/' + _this.options.projectId,
-            headers: { 'Content-Type': 'application/json' },
-            auth: {
-              username: _this.options.username,
-              password: _this.options.password,
-            },
-            data: JSON.stringify({
-              suite_id: _this.options.suiteId,
-              name: name,
-              description: description,
-              include_all: false,
-              case_ids: ids,
-            }),
-          }).then(function (response) {
-            console.log(
-              'Creating Test Run... ---> Run id is:  ',
-              response.data.id,
-            );
-            _this.runId = response.data.id;
-          });
-        }, 7000);
-      });
+    axios({
+      method: 'post',
+      url: this.base + '/add_run/' + this.options.projectId,
+      headers: { 'Content-Type': 'application/json' },
+      auth: {
+        username: this.options.username,
+        password: this.options.password,
+      },
+      data: JSON.stringify({
+        suite_id: this.options.suiteId,
+        name: name,
+        description: description,
+        include_all: true,
+      }),
+    }).then(function (response) {
+      console.log('Creating Test Run... ---> Run id is:  ', response.data.id);
+      _this.runId = response.data.id;
     });
     // .catch(error => console.(error));
   };

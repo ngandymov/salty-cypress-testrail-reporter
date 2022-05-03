@@ -1,6 +1,6 @@
 {
   "name": "sm-salty-cypress-testrail-reporter",
-  "version": "0.0.1-auto",
+  "version": "1.0.0",
   "description": "A Testrail reporter for cypress including TestRail API basic library",
   "main": "index.js",
   "private": false,
